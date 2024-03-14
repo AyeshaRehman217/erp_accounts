@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chart Of Account</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+
+<span class="titles-style" th:text="|Chart Of Accounts / Count: ${#lists.size(chartOfAccounts)}|"></span>
+
+<!-- Students Table -->
+<div id="chartOfAccounts">
+    <div th:if="${not #lists.isEmpty(chartOfAccounts)}">
+        <table class="chartOfAccounts_table paginate-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Control Code</th>
+                <th>Name</th>
+                <th>Is Entry Allowed</th>
+                <th>Account Type Name</th>
+                <th>Level</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="chartOfAccount : ${chartOfAccounts}">
+                <td th:text="${chartOfAccounts.indexOf(chartOfAccount)+1}"></td>
+                <td th:text="${chartOfAccount?.controlCode}"></td>
+                <td th:text="${chartOfAccount?.name}"></td>
+                <td th:text="${chartOfAccount?.isEntryAllowed}"></td>
+                <td th:text="${chartOfAccount?.accountTypeName}"></td>
+                <td th:text="${chartOfAccount?.level}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
